@@ -73,10 +73,18 @@ EXPOSE        5000
 
 VOLUME        /data
 
-# mDNS
-ENV           MDNS_NAME="Mongo mDNS display name"
-ENV           MDNS_HOST="mongo"
-ENV           MDNS_TYPE=_mongo._tcp
+ENV           _SERVICE_NICK="mongo"
+ENV           _SERVICE_TYPE="database"
+
+### mDNS broadcasting
+# Type to advertise
+ENV           MDNS_TYPE="_$_SERVICE_TYPE._tcp"
+# Name is used as a short description for the service
+ENV           MDNS_NAME="$_SERVICE_NICK mDNS display name"
+# The service will be annonced and reachable at $MDNS_HOST.local (set to empty string to disable mDNS announces entirely)
+ENV           MDNS_HOST="$_SERVICE_NICK"
+# Also announce the service as a workstation (for example for the benefit of coreDNS mDNS)
+ENV           MDNS_STATION=true
 
 # Realm in case access is authenticated
 ENV           REALM="My Precious Realm"
