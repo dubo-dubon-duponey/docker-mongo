@@ -69,7 +69,7 @@ USER          dubo-dubon-duponey
 
 COPY          --from=builder --chown=$BUILD_UID:root /dist /
 
-EXPOSE        5000
+EXPOSE        27017
 
 VOLUME        /data
 
@@ -94,8 +94,8 @@ ENV           PASSWORD=""
 
 # Log level and port
 ENV           LOG_LEVEL=warn
-ENV           PORT=5000
+ENV           PORT=27017
 
-ENV           HEALTHCHECK_URL=http://127.0.0.1:5000/
+ENV           HEALTHCHECK_URL=http://127.0.0.1:27017/
 
 HEALTHCHECK   --interval=120s --timeout=30s --start-period=10s --retries=1 CMD http-health || exit 1
