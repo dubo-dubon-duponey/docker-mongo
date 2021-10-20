@@ -35,7 +35,7 @@ RUN           chmod 555 /dist/boot/bin/*; \
 FROM          $FROM_REGISTRY/$FROM_IMAGE_RUNTIME
 
 ENV           MONGO_MAJOR=5.0
-ENV           MONGO_VERSION=5.0.1
+ENV           MONGO_VERSION=5.0.3
 
 USER          root
 
